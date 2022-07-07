@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
 {
@@ -54,4 +55,24 @@ class BlogController extends Controller
         $cari = Blog::where('title', 'like', '%' . $param . '%')->get();
         return $cari;
     }
+
+    public function validateData(Request $request){
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|min:2|max:255',
+            'details' => 'required',
+        ]);
+        if($validator->fails()){
+            return $validator->errors();
+        } else {
+            $validator = new Blog;
+            $validator->title = $request->title;
+            $validator->details = $request->details;
+            $result = $validator->save();
+            if($result){
+                return ["result" => "Valid Request"];
+            } else {
+                return ["result" => "Valid Not Request"];
+            }
+        }    
+    }   
 }

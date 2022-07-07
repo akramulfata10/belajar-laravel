@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\FileUpload;
 use App\Http\Controllers\TestApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,12 @@ Route::post('add-api', [BlogController::class, 'addPost']);
 Route::put('update-blog', [BlogController::class, 'updateBlog']);
 Route::delete('delete-blog/{id}', [BlogController::class, 'deleteBlog']);
 Route::get('cari-data/{param}', [BlogController::class, 'searchBlog']);
+
+Route::post('/valid-post', [BlogController::class, 'validateData']);
+Route::post('/upload', [FileUpload::class, 'uploadFile']);
+
+
+
 
 
 
