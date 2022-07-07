@@ -16,8 +16,8 @@
                                 <div class="card">
                                     <img src="{{asset('assets/uploads/category/'.$categori->image)}}" alt="Category">
                                     <div class="card-body">
-                                        <h5>{{$cate->name}}</h5>
-                                        <p>{{$cate->description}}</p>
+                                        <h5>{{$categori->name}}</h5>
+                                        <p>{{$categori->description}}</p>
                                     </div>
                                 </div>
                             </a>
